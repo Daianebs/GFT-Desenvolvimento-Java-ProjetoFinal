@@ -1,0 +1,1 @@
+web: java -jar build/libs/GFT-Desenvolvimento-Java-ProjetoFinal-0.0.1-SNAPSHOT.jar
