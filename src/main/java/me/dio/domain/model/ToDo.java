@@ -1,5 +1,6 @@
 package me.dio.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 /**
@@ -28,10 +29,11 @@ public class ToDo {
     private String description;
 
     /**
-     * Status atual da tarefa (e.g., PENDING, COMPLETED).
+     * Status atual da tarefa (PENDING, COMPLETED...).
      */
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String status;
+    private Status status;
 
     /**
      * Data de vencimento da tarefa.
@@ -45,6 +47,7 @@ public class ToDo {
      */
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference // Esta é a referência "dependente"
     private User user;
 
     /**
@@ -53,6 +56,7 @@ public class ToDo {
      */
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @JsonBackReference // Esta é a referência "dependente"
     private Category category;
 
     // Construtor padrão necessário para o JPA
@@ -83,11 +87,11 @@ public class ToDo {
         this.description = description;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

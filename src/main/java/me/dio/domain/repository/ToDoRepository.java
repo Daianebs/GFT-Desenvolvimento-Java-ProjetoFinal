@@ -1,5 +1,6 @@
 package me.dio.domain.repository;
 
+import me.dio.domain.model.Status;
 import me.dio.domain.model.ToDo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -26,5 +27,11 @@ public interface ToDoRepository extends JpaRepository<ToDo, Long> {
      * @return Lista de ToDo associadas à categoria.
      */
     List<ToDo> findByCategoryId(Long categoryId);
-}
 
+    /**
+     * Método para buscar todas as tarefas com um status específico.
+     * @param status Status das tarefas a serem buscadas.
+     * @return Lista de ToDo com o status fornecido.
+     */
+    List<ToDo> findByStatus(Status status);
+}

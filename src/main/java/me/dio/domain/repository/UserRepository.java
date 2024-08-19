@@ -12,6 +12,13 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     /**
+     * Método para verificar se já existe um usuário com o e-mail fornecido.
+     * @param email e-mail a ser verificado.
+     * @return true se já existir um usuário com o e-mail fornecido, false caso contrário.
+     */
+    boolean existsByEmail(String email);
+
+    /**
      * Método para buscar um usuário por seu nome de usuário.
      * @param username Nome de usuário a ser buscado.
      * @return User correspondente ao nome de usuário fornecido.

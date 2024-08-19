@@ -1,5 +1,6 @@
 package me.dio.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class Category {
      * O mapeamento é unidirecional e as operações em cascata são aplicadas.
      */
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference // Esta é a referência "gerenciadora"
     private List<ToDo> todos;
 
     // Construtor padrão necessário para o JPA
