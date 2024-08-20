@@ -2,8 +2,6 @@ package me.dio.controller.dto;
 
 import me.dio.domain.model.User;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
 
 /**
  * DTO para representar um usuário.
@@ -11,14 +9,9 @@ import jakarta.validation.constraints.Size;
  */
 public record UserDto(
         Long id,
-        @NotEmpty(message = "O nome de usuário não pode estar vazio.")
-        @Size(max = 27, message = "O nome de usuário deve ter no máximo 27 caracteres.")
         String username,
-        @NotEmpty(message = "O e-mail não pode estar vazio.")
         @Email(message = "O e-mail deve ser válido.")
         String email,
-        @NotEmpty(message = "A senha não pode estar vazia.")
-        @Size(min = 8, message = "A senha deve ter pelo menos 8 caracteres.")
         String password
 ) {
     /**
